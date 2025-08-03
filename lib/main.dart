@@ -172,12 +172,14 @@ class _TrustifyHomePageState extends State<TrustifyHomePage> {
 
   Future<void> _registerInContract() async {
     try {
+      developer.log('🔄 Iniciando registro en contrato...', name: 'TrustifyApp');
       setState(() {
         _statusMessage = 'Registrando dirección en contrato...';
       });
 
       final txHash = await _testContractService.registerWalletAddress();
-      
+      developer.log('✅ Transacción enviada. Hash: $txHash', name: 'TrustifyApp');
+
       if (mounted && txHash != null) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -186,17 +188,20 @@ class _TrustifyHomePageState extends State<TrustifyHomePage> {
             duration: const Duration(seconds: 3),
           ),
         );
-        
+
+        developer.log('⏳ Esperando confirmación de transacción...', name: 'TrustifyApp');
         // Esperar un poco para que la transacción se confirme
         await Future.delayed(const Duration(seconds: 3));
         await _checkRegistrationStatus();
+        developer.log('✅ Estado de registro verificado después de la transacción.', name: 'TrustifyApp');
       }
     } catch (e) {
       developer.log('❌ Error registrando en contrato: $e', name: 'TrustifyApp');
+      print('❌ Error registrando en contrato: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('❌ Error: $e'),
+            content: Text('❌ Error Movilr: $e'),
             backgroundColor: Colors.red,
             duration: const Duration(seconds: 3),
           ),

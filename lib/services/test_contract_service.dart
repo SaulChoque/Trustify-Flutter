@@ -10,10 +10,10 @@ class TestContractService {
   final WalletService _walletService;
   
   // Contract address (Update this after deploying the contract)
-  static const String _contractAddress = '0x0000000000000000000000000000000000000000'; // TODO: Update with deployed contract address
+  static const String _contractAddress = '0xf24e12Ef8aAcB99FC5843Fc56BEA0BFA5B039BFF'; // TODO: Update with deployed contract address
   
   // Endpoint RPC de Sepolia - reemplaza con tu PROJECT_ID de Infura
-  static const String rpcUrl = 'https://sepolia.infura.io/v3/YOUR_INFURA_PROJECT_ID';
+  static const String rpcUrl = 'https://sepolia.optimism.io/api?';
   
   // ABI del contrato de prueba
   static const String contractABI = '''[

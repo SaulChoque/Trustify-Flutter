@@ -10,10 +10,11 @@ class TestContractService {
   final WalletService _walletService;
   
   // Contract address (Update this after deploying the contract)
-  static const String _contractAddress = '0xf24e12Ef8aAcB99FC5843Fc56BEA0BFA5B039BFF'; // TODO: Update with deployed contract address
+  static const String _contractAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3'; 
+  // TODO: Update with deployed contract address
   
   // Endpoint RPC de Sepolia - reemplaza con tu PROJECT_ID de Infura
-  static const String rpcUrl = 'https://sepolia.optimism.io/api?';
+  static const String rpcUrl = 'http://192.168.137.202:8545';
   
   // ABI del contrato de prueba
   static const String contractABI = '''[
@@ -91,7 +92,7 @@ class TestContractService {
       final txHash = await _client.sendTransaction(
         privateKey,
         transaction,
-        chainId: 11155111, // Sepolia chain ID
+        chainId: 31337, // Anvil local chain ID
       );
 
       developer.log('🚀 Transacción enviada: $txHash', name: 'TestContract');
